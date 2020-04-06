@@ -34,6 +34,7 @@ public class App {
 		loadData();
 		// Start the server
 		SpringApplication.run(App.class, args);
+		System.out.println("Server Started Succesfully");
 	}
 
 	public static void loadData() {

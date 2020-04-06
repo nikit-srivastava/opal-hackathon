@@ -102,8 +102,8 @@ export class MapContainerComponent implements OnInit {
 
   showUri({x, y, object}) {
     const tooltip = document.getElementById('gstt');
-    y = y - 15;
-    x = x - 10;
+    y = y - 50;
+    x = x - 50;
     if (object) {
       tooltip.style.top = `${y}px`;
       tooltip.style.left = `${x}px`;
