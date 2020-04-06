@@ -13,6 +13,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<springframework.boot.version>2.2.6.RELEASE</springframework.boot.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 
 	<dependencies>
@@ -34,21 +37,26 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<version>2.2.6.RELEASE</version>
+			<version>${springframework.boot.version}</version>
 		</dependency>
 
 	</dependencies>
 
 	<build>
 		<plugins>
+			
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<release>11</release>
-				</configuration>
-			</plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${springframework.boot.version}</version>
+				<executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal>
+	                    </goals>
+	                </execution>
+            	</executions>
+            </plugin>
 		</plugins>
 	</build>
 </project>
