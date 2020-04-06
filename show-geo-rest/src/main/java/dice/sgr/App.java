@@ -20,7 +20,8 @@ import dice.sgr.bean.UiDataItem;
 import dice.sgr.util.SparqlUtil;
 
 /**
- * Hello world!
+ * 
+ * @author Nikit
  *
  */
 @SpringBootApplication
