@@ -16,9 +16,9 @@ public class SgrRestController {
 	
 	
 	@RequestMapping("/refresh-cache")
-	public String greeting() {
+	public Set<UiDataItem> refresh() {
 		App.loadData();
-		return "success";
+		return App.UI_DATA_ITEMS;
 	}
 	
 	@RequestMapping("/fetch-data")
