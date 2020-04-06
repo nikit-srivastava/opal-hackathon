@@ -36,8 +36,8 @@ public class Polygon {
 		float xVal = 0;
 		float yVal = 0;
 		for (Coordinate coordinate : coordinates) {
-			xVal += Float.parseFloat(coordinate.getX());
-			yVal += Float.parseFloat(coordinate.getY());
+			xVal += coordinate.getX();
+			yVal += coordinate.getY();
 		}
 
 		float res[] = { (xVal / (float) size), (yVal / (float) size) };

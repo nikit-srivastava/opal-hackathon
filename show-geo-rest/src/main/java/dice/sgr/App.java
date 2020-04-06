@@ -28,6 +28,7 @@ public class App {
 	public static final Map<String, DatasetGeoInfo> DATA_MAP = new HashMap<>();
 	
 	public static final Set<UiDataItem> UI_DATA_ITEMS = new HashSet<>();
+	public static final Map<Coordinate, UiDataItem> UI_DATA_MAP = new HashMap<Coordinate, UiDataItem>();
 
 	public static void main(String[] args) {
 		// Query for data
@@ -54,7 +55,7 @@ public class App {
 				String x = m.group();
 				m.find();
 				String y = m.group();
-				Coordinate newCoord = new Coordinate(x, y);
+				Coordinate newCoord = new Coordinate(Float.parseFloat(x), Float.parseFloat(y));
 				coordinates.add(newCoord);
 			}
 			// Fill formatted data here
@@ -68,11 +69,19 @@ public class App {
 			}
 			geoInfo.addGeoEntry(polygon);
 		}
+		UI_DATA_ITEMS.addAll(UI_DATA_MAP.values());
 	}
 	
 	private static void addFormattedUiData(String datasetUri, Polygon polygon) {
-		UiDataItem dataItem = new UiDataItem(polygon.getCenterCoords(), datasetUri);
-		UI_DATA_ITEMS.add(dataItem);
+		float[] coords = polygon.getCenterCoords();
+		Coordinate coordinate = new Coordinate(coords[0], coords[1]);
+		UiDataItem dataItem = UI_DATA_MAP.get(coordinate);
+		if(dataItem == null) {
+			Set<String> uriSet = new HashSet<String>();
+			dataItem = new UiDataItem(coords, uriSet);
+			UI_DATA_MAP.put(coordinate, dataItem);
+		}
+		dataItem.addUri(datasetUri);
 	}
 
 }
