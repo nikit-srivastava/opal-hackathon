@@ -10,10 +10,11 @@ The user interface would look something like this: <br><br>
 You can zoom in and out of map using the mouse scroll. Also, you can move inside the map by dragging it. The data is loaded from the server cache. To refresh the data, please click the "Refresh Cache" button. An hourglass icon appears next to the "Refresh Cache" button when it is clicked. Cache is refreshed when the icon disappears.<br><br>
 <b>Please Note:</b> Refreshing the cache takes some time (around 15-20 seconds).
 ## Pre-requisites
-Please make sure you have the following installed on your local system before proceeding to the next step:
+Please make sure to provide a <a href="https://www.mapbox.com/">Mapbox</a> api access token here: <a href="https://github.com/nikit91/opal-hackathon/blob/master/show-geo-react/src/map/map-comp.js#L14">map-comp.js#L14</a>.
+Also, make sure that you have the following installed on your local system before proceeding to the next step:
 * <a href="https://www.oracle.com/java/technologies/javase-downloads.htmll">Java</a> version 8 or higher
 * <a href="https://nodejs.org/en/download/">Node</a> version 10 or higher
-* <a href="https://maven.apache.org/download.cgi">Maven version 3.6</a> or higher
+* <a href="https://maven.apache.org/download.cgi">Maven</a> version 3.6 or higher
 ## How to Run locally
 First, clone the project in your local system by executing the following command on your command line: <br>`git clone https://github.com/nikit91/opal-hackathon.git` <br>
 
