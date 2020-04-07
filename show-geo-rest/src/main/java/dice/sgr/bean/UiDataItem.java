@@ -2,10 +2,15 @@ package dice.sgr.bean;
 
 import java.util.Arrays;
 import java.util.Set;
-
+/**
+ * Class to model single Geo data item to be rendered on UI
+ * @author Nikit
+ *
+ */
 public class UiDataItem {
-	
+	// 2-dimensional coordinate
 	float[] coordinates;
+	// Set of related Dataset Uris
 	Set<String> datasetUri;
 	
 	public UiDataItem(float[] coordinates, Set<String> datasetUri) {

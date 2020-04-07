@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dice.sgr.App;
 import dice.sgr.bean.UiDataItem;
-
+/**
+ * Rest Service to provide the fetch Geo Data and also refresh cache
+ * @author Nikit
+ *
+ */
 @RestController
 @CrossOrigin(origins = "*", allowCredentials = "true")
 @RequestMapping("/")

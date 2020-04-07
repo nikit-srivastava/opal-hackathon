@@ -1,7 +1,13 @@
 package dice.sgr.bean;
-
+/**
+ * Classs to model a simple 2-dimensional coordinate
+ * @author Nikit
+ *
+ */
 public class Coordinate {
+	// value of the x axis
 	float x;
+	// value of the y axis
 	float y;
 	
 	public Coordinate(float x, float y) {

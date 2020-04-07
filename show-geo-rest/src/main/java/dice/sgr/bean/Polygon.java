@@ -2,7 +2,11 @@ package dice.sgr.bean;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Class to model a Polygon using a set of Coordinates
+ * @author Nikit
+ *
+ */
 public class Polygon {
 
 	List<Coordinate> coordinates;
