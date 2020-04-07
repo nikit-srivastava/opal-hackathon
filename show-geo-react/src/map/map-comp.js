@@ -9,16 +9,11 @@ import icon_image from '../data/location-icon-atlas.png';
 import image_json from '../data/location-icon-mapping.json';
 
 import IconClusterLayer from './icon-cluster-layer';
-import hourglass_img from "../data/hourglass.gif";
 
 // Set your mapbox token here
 const MAPBOX_TOKEN = 'pk.eyJ1IjoibmlraXQ5MSIsImEiOiJjamt2MG5jd2Qwa2o5M3FtcnhoNDQ2YjRoIn0.oMdD9S92FwUk2SBVZMiT9A'; // eslint-disable-line
 
-// Source data CSV
-const DATA_URL =
-  'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/icon/meteorites.json'; // eslint-disable-line
- // const DATA_URL =
-  //'http://localhost:8080/fetch-data';
+  const DATA_URL = 'http://localhost:8080/fetch-data';
 
 const MAP_VIEW = new MapView({repeat: true});
 const INITIAL_VIEW_STATE = {
@@ -72,11 +67,15 @@ export default class MapComp extends Component {
     xhr.addEventListener('load', () => {
       // update the state of the component with the result here
       const newData = JSON.parse(xhr.responseText);
-      console.log('new data arrived: ', newData);
+      if(newData && newData.length >0){
+        INITIAL_VIEW_STATE.longitude = newData[0].coordinates[0];
+        INITIAL_VIEW_STATE.latitude = newData[0].coordinates[1];
+      }
+
 	  self.setState({ dummyData: newData })
     })
     // open the request with the verb and the url
-    xhr.open('GET', 'http://localhost:8080/fetch-data')
+    xhr.open('GET', DATA_URL)
     // send the request
     xhr.send()
   }
@@ -183,25 +182,20 @@ export default class MapComp extends Component {
 
   render() {
     const {mapStyle = 'mapbox://styles/mapbox/dark-v9'} = this.props;
-	const ht = 90;
-	const wd = 85;
     return (
       <DeckGL
-	  style={{height: ht+'vh'}}
         layers={this._renderLayers()}
         views={MAP_VIEW}
         initialViewState={INITIAL_VIEW_STATE}
         controller={{dragRotate: false}}
         //onViewStateChange={this._closePopup}
         onClick={this._onClick}
-      >
-        <StaticMap
+      ><StaticMap
           reuseMaps
           mapStyle={mapStyle}
           preventStyleDiffing={true}
           mapboxApiAccessToken={MAPBOX_TOKEN}
         />
-
         {this._renderhoveredItems}
 		
       </DeckGL>

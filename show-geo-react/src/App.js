@@ -3,11 +3,11 @@ import {render} from 'react-dom';
 import './App.css';
 import MapComp from "./map/map-comp";
 import hourglass_img from './data/hourglass.gif';
+import Button from '@material-ui/core/Button';
 export default class App extends Component {
 
     constructor(props) {
         super(props);
-        this.child = React.createRef();
         this.state = {
             show_hourglass : false
         };
@@ -42,14 +42,16 @@ export default class App extends Component {
             <div className={"wrapper"}>
                 <div className={"map-container"}>
                     <div className={"map-box"}>
-                        <div id={"map-div"}><MapComp ref={this.child} refresh={this.state.refreshData}/></div>
+                        <MapComp ref={this.child} refresh={this.state.refreshData}/>
                     </div>
                 </div>
                 <div className={"button-container"}>
                     <div className={"button-box"}>
-                        <button type={"button"} onClick={this.refreshCache}>Refresh Cache</button>
+                        <Button variant="contained" color="primary" onClick={this.refreshCache}>
+                            Refresh Cache
+                        </Button>
                         {this.state.show_hourglass
-                            ? <img src={hourglass_img} className={'hourglass'}/>
+                            ? <img title={'Please wait!'} src={hourglass_img} className={'hourglass'}/>
                             : <br/>
                         }
                     </div>
