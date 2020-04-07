@@ -9,6 +9,7 @@ import icon_image from '../data/location-icon-atlas.png';
 import image_json from '../data/location-icon-mapping.json';
 
 import IconClusterLayer from './icon-cluster-layer';
+import hourglass_img from "../data/hourglass.gif";
 
 // Set your mapbox token here
 const MAPBOX_TOKEN = 'pk.eyJ1IjoibmlraXQ5MSIsImEiOiJjamt2MG5jd2Qwa2o5M3FtcnhoNDQ2YjRoIn0.oMdD9S92FwUk2SBVZMiT9A'; // eslint-disable-line
@@ -30,6 +31,13 @@ const INITIAL_VIEW_STATE = {
 };
 /* eslint-disable react/no-deprecated */
 export default class MapComp extends Component {
+
+  componentWillReceiveProps(props) {
+    const { refresh } = this.props;
+    if (props.refresh !== refresh) {
+      this.getData(this);
+    }
+  }
 	
 	componentDidMount() {
         const self = this;
@@ -99,19 +107,26 @@ export default class MapComp extends Component {
     }
   }
 
+  handleInfoBoxClick(eventDt){
+    console.log('click detected on div: ',eventDt);
+    eventDt.stopPropagation();
+  }
+
   _renderhoveredItems() {
     const {x, y, hoveredObject, expandedObjects} = this.state;
 
     if (expandedObjects) {
       return (
-        <div className="tooltip interactive" style={{left: x, top: y}}>
-          {expandedObjects.map(({name, year, mass, class: meteorClass}) => {
+        <div className="tooltip interactive" style={{left: x, top: y, positon: 'absolute'}}>
+          {expandedObjects.length > 1
+              ? <div>There are {hoveredObject?hoveredObject.point_count:'multiple'} coordinate pins at this location (Zoom in to expand) </div>
+              : <a/>
+          }
+          {expandedObjects.map(({coordinates, datasetUri}) => {
             return (
-              <div key={name}>
-                <h5>{name}</h5>
-                <div>Year: {year || 'unknown'}</div>
-                <div>Class: {meteorClass}</div>
-                <div>Mass: {mass}g</div>
+              <div key={coordinates}>
+                <h5>Longitude: { coordinates[0]}, Latitude: { coordinates[1]}</h5>
+                <div> Available Datasets: {datasetUri.map((uri) => <div key={uri}><a href={uri} target="_blank">{uri}</a></div>) || 'unknown'}</div>
               </div>
             );
           })}
@@ -125,11 +140,11 @@ export default class MapComp extends Component {
 
     return hoveredObject.cluster ? (
       <div className="tooltip" style={{left: x, top: y}}>
-        <h5>{hoveredObject.point_count} records</h5>
+        <h5>{hoveredObject.point_count} Coordinates</h5>
       </div>
     ) : (
       <div className="tooltip" style={{left: x, top: y}}>
-        <h5>{hoveredObject.datasetUri.length} Dataset(s) at this location.
+        <h5>{hoveredObject.datasetUri.length} Dataset(s) at this location
         </h5>
       </div>
     );
@@ -177,7 +192,7 @@ export default class MapComp extends Component {
         views={MAP_VIEW}
         initialViewState={INITIAL_VIEW_STATE}
         controller={{dragRotate: false}}
-        onViewStateChange={this._closePopup}
+        //onViewStateChange={this._closePopup}
         onClick={this._onClick}
       >
         <StaticMap

@@ -26,7 +26,7 @@ export default class App extends Component {
         // get a callback when the server responds
         xhr.addEventListener('load', () => {
             // update the state of the component with the result here
-            this.child.current.getData(this.child.current);
+            this.refreshData();
             this.setState({ show_hourglass: false });
         })
         // open the request with the verb and the url
@@ -34,12 +34,15 @@ export default class App extends Component {
         // send the request
         xhr.send();
     }
+
+    refreshData = () =>
+        this.setState({refreshData: !this.state.refreshData})
     render() {
         return (
             <div className={"wrapper"}>
                 <div className={"map-container"}>
                     <div className={"map-box"}>
-                        <div id={"map-div"}><MapComp ref={this.child}/></div>
+                        <div id={"map-div"}><MapComp ref={this.child} refresh={this.state.refreshData}/></div>
                     </div>
                 </div>
                 <div className={"button-container"}>
