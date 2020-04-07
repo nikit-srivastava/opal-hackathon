@@ -48,5 +48,10 @@ public class UiDataItem {
 		if (!Arrays.equals(coordinates, other.coordinates))
 			return false;
 		return true;
-	}	
+	}
+	@Override
+	public String toString() {
+		return "UiDataItem [coordinates=" + Arrays.toString(coordinates) + ", datasetUri=" + datasetUri + "]";
+	}
+	
 }
