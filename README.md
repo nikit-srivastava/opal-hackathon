@@ -25,7 +25,7 @@ Local deployment is done in two parts:
 ### Rest Service Deployment
 Change your current directory to `show-geo-rest/` by executing `cd show-geo-rest` <br>. Then run the following commands:
 * `mvn clean install`
-* `mvn spring-boot run`
+* `mvn spring-boot:run`
 
 As this program first fetches the data from the sparql endpoint, it might take 15-20 seconds to start. Please wait for the message `Server Started Successfully` before proceeding to the next step. <br>
 Upon successful deployment the rest service would start listening to the port `8080` by default.
