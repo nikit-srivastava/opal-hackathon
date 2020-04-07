@@ -2,7 +2,11 @@ package dice.sgr.bean;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Class to model a Polygon using a set of Coordinates
+ * @author Nikit
+ *
+ */
 public class Polygon {
 
 	List<Coordinate> coordinates;
@@ -36,8 +40,8 @@ public class Polygon {
 		float xVal = 0;
 		float yVal = 0;
 		for (Coordinate coordinate : coordinates) {
-			xVal += Float.parseFloat(coordinate.getX());
-			yVal += Float.parseFloat(coordinate.getY());
+			xVal += coordinate.getX();
+			yVal += coordinate.getY();
 		}
 
 		float res[] = { (xVal / (float) size), (yVal / (float) size) };

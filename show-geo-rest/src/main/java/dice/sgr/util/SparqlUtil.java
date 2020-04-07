@@ -10,15 +10,30 @@ import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
-
+/**
+ * Class to encapsulate Util methods related to Sparql querying
+ * @author Nikit
+ *
+ */
 public class SparqlUtil {
+	// Endpoint used to fetch the geo dataset
 	public static final String EU_DATAPORTAL_SPARQL_ENDPOINT = "https://www.europeandataportal.eu/sparql";
 	
+	/**
+	 * Method to query a given sparql endpoint and return the list of results
+	 * @param queryStr - Sparql query to be sent
+	 * @return - List of QuerySolution that contains the fetched data
+	 */
 	public static List<QuerySolution> executeSparql(String queryStr) {
 		return executeSparql(queryStr, EU_DATAPORTAL_SPARQL_ENDPOINT);
 	}
 	
-	
+	/**
+	 * Method to query a given sparql endpoint and return the list of results
+	 * @param queryStr - Sparql query to be sent
+	 * @param url - Url of the Sparql endpoint
+	 * @return - List of QuerySolution that contains the fetched data
+	 */
 	public static List<QuerySolution> executeSparql(String queryStr, String url) {
 		ResultSet res = null;
 		List<QuerySolution> querySolutionList = new ArrayList<>();
@@ -41,6 +56,10 @@ public class SparqlUtil {
 		return querySolutionList;
 	}
 	
+	/**
+	 * Method to sleep the current thread for given period of time
+	 * @param ms - time in milliseconds
+	 */
 	public static void sleep(long ms) {
 		try {
 			Thread.sleep(ms);

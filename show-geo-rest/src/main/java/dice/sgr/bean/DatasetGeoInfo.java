@@ -1,10 +1,15 @@
 package dice.sgr.bean;
 
 import java.util.List;
-
+/**
+ * Class to model the Geo Information for Datasets
+ * @author Nikit
+ *
+ */
 public class DatasetGeoInfo {
-	
+	// Uri of the dataset
 	String datasetUri;
+	// All the Polygon entries found for that dataset
 	List<Polygon> geoEntries;
 	public DatasetGeoInfo(String datasetUri, List<Polygon> geoEntries) {
 		super();

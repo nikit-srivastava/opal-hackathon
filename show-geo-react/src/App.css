@@ -1,0 +1,51 @@
+.wrapper,
+html,
+#root,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.map-container {
+  flex: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-box {
+  margin: 20px;
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+
+.button-container {
+  flex: 10%;
+  display: flex;
+  flex-direction: row;
+}
+.button-box {
+  margin: 20px;
+  flex-grow: 1;
+  flex-direction: row;
+}
+.hourglass {
+  margin-left: 20px;
+  height: 40px;
+  margin-bottom: -18px;
+}
+
+.border-map {
+  border-style: solid;
+  border: gray;
+  border-width: 2px;
+}
+
+.tooltip {pointer-events: none; position: absolute; z-index: 9; font-size: 12px; padding: 8px; background: #000; color: #fff; min-width: 160px; max-height: 240px; overflow-y: hidden;}
+.tooltip.interactive {pointer-events: all; background: #fcfcfc; color: #444; overflow-y: auto;}
