@@ -11,7 +11,7 @@ import image_json from '../data/location-icon-mapping.json';
 import IconClusterLayer from './icon-cluster-layer';
 
 // Set your mapbox token here
-const MAPBOX_TOKEN = 'pk.eyJ1IjoibmlraXQ5MSIsImEiOiJjamt2MG5jd2Qwa2o5M3FtcnhoNDQ2YjRoIn0.oMdD9S92FwUk2SBVZMiT9A'; // eslint-disable-line
+const MAPBOX_TOKEN = '<put_your_mapbox_access_token_here>'; // eslint-disable-line
 
   const DATA_URL = 'http://localhost:8080/fetch-data';
 
