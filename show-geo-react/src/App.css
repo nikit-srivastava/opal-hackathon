@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+.wrapper,
+html,
+#root,
+body {
+  height: 100%;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.map-container {
+  flex: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.map-box {
+  margin: 20px;
+  border-style: solid;
+  border: gray;
+  flex-grow: 1;
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-container {
+  flex: 10%;
+  display: flex;
+  flex-direction: row;
 }
+.button-box {
+  margin: 20px;
+  flex-grow: 1;
+}
+.hourglass {
+  margin-left: 20px;
+  height: 20px;
+}
+
+.tooltip {pointer-events: none; position: absolute; z-index: 9; font-size: 12px; padding: 8px; background: #000; color: #fff; min-width: 160px; max-height: 240px; overflow-y: hidden;}
+.tooltip.interactive {pointer-events: all; background: #fcfcfc; color: #444; overflow-y: auto;}
